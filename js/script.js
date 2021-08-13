@@ -12,17 +12,14 @@ $( function() {
   var tilePool = [];
 
   $( document ).ready(function() {
-
-    $.getJSON("pieces.json", function(data){
-      console.log(data.letter);
-      //tileJSON = data.pieces;
-      //startgame();
-    });
- 
     //loadTiles();
   });
 
- 
+  $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
+  .done(function(response) {
+    tileJSON = response.pieces;
+    startgame();
+  });
 
     function startgame(){
       fillTilePool();
