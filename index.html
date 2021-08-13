@@ -7,6 +7,7 @@ excerpted for educational purposes with credit to the author.
 updated by WZ on July 7, 2021 at 9:23 AM
 resources:
 https://jqueryui.com/droppable/
+https://www.tutorialspoint.com/jqueryui/jqueryui_droppable.htm
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,35 +15,50 @@ https://jqueryui.com/droppable/
     <meta charset="utf-8">
     <title>title</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/script.js"></script>
   </head>
-  <body>
-      <p>hello world</p>
-
-      <div id="draggable" class="ui-widget-content">
-        <p maxwidth="90" maxheight="55">Drag me to my target</p>
+  <body">
+    <div id="game">
+      <h1> The Game of Scrabble!</h1>
+      <div id="score_div">
+        <div class="col-sm-3" id="current_word">Word:</div>
+        <div class="col-sm-3" id="score">Score:</div>
+        <div class="col-sm-3" id="remaining_tile">Remaining Tiles:</div>
+        <div class="col-sm-3" id="High_score">Highest Score:</div>
+      </div><br><br>
+  
+      <div id="targetboard">
+        <div class="droppable blank"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable doubleWord"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable doubleLetter"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable doubleLetter"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable doubleWord"></div>
+        <div class="droppable blank"></div>
+        <div class="droppable blank"></div>
       </div>
-       
-      <div id="droppable" class="ui-widget-header">
-        <p>Drop here</p>
-      </div>
-
-    <img src="graphics_data/Scrabble_Board_Oneline.png" width="785" height="75" alt="Elements" usemap="#elementmap" />
-
-    <map name="elementmap">
-        <area id="element1" shape="rect" coords="0,0,82,126" alt="Element 1"/>
-        <area id="element2" shape="circle" coords="90,58,3" alt="Element 2"/>
-    </map>
-
     <div>
-        <img src="graphics_data/holder.png" width="785" height="75"  />
+      <button id="btnReset">Reset</button>
     </div>
-
-
-    
+      <div id="tileboard">
+        <div id="draggable" class="ui-widget-content">
+          <img class="tile" src="graphics_data/Scrabble_Tiles/Scrabble_Tile_A.jpg" width="60" height="65"  />
+          <img class="tile" src="graphics_data/Scrabble_Tiles/Scrabble_Tile_B.jpg" width="60" height="65"  />
+        </div>
+      </div>
+      
+    </div>
 
     <!-- page content -->
   </body>
