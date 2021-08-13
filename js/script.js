@@ -12,7 +12,7 @@ $( function() {
   var tilePool = [];
 
   $( document ).ready(function() {
-    //loadTiles();
+    loadTiles();
   });
 
   $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
@@ -23,18 +23,19 @@ $( function() {
 
     function startgame(){
       fillTilePool();
-      var rTile = document.getElementById("remaining_tile");
-      rTile.append(tilePool.length)
+
     }
 
        //initialize the pool of tile with all duplicates included
-       function fillTilePool(){
-        for(i = 0; i < 27; i++){
-          var currentTile = tileJSON[i];
-          for(k = 0; k < currentTile.amount; k++){
-            tilePool.push(currentTile);
-          }
+    function fillTilePool(){
+      for(i = 0; i < 27; i++){
+        var currentTile = tileJSON[i];
+        for(k = 0; k < currentTile.amount; k++){
+          tilePool.push(currentTile);
         }
+      }
+      var rTile = document.getElementById("remaining_tile");
+      rTile.append(tilePool.length)
       }
 
   function reverToRack(event, ui){
