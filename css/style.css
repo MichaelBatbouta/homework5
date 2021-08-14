@@ -30,6 +30,10 @@ h1{
     border-color : red;
     background : green;
  }
+ #buttons{
+  margin-top:20px;
+  margin-bottom:-20px;
+ }
 
  /* change below!!!*/
  /*Style and center the score board and everything in it*/
@@ -74,3 +78,4 @@ h1{
     background-size: 100% 100%;
     margin:0px -1px 0px -5px;
  }
+

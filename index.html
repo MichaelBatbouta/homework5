@@ -16,7 +16,7 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_droppable.htm
     <title>title</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/script.js"></script>
@@ -25,36 +25,46 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_droppable.htm
     <div id="game">
       <h1> The Game of Scrabble!</h1>
       <div id="score_div">
-        <div class="col-sm-3" id="current_word">Word:</div>
-        <div class="col-sm-3" id="score">Score:</div>
-        <div class="col-sm-3" id="remaining_tile">Remaining Tiles:</div>
-        <div class="col-sm-3" id="High_score">Highest Score:</div>
+        <div class="col-sm-3" id="current_word">Word:<div></div></div>
+        <div class="col-sm-3" id="score">Score:<div>0</div></div>
+        <div class="col-sm-3" id="remaining_tile">Remaining Tiles:<div>0</div></div>
+        <div class="col-sm-3" id="Total_score">Total Score:<div>0</div></div>
       </div><br><br>
   
       <div id="targetboard">
-        <div class="droppable blank"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable doubleWord"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable doubleLetter"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable doubleLetter"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable doubleWord"></div>
-        <div class="droppable blank"></div>
-        <div class="droppable blank"></div>
+        <div class="droppable blank" id="A"></div>
+        <div class="droppable blank" id ="B"></div>
+        <div class="droppable doubleWord" id ="C"></div>
+        <div class="droppable blank" id ="D"></div>
+        <div class="droppable blank" id ="E"></div>
+        <div class="droppable blank" id ="F"></div>
+        <div class="droppable doubleLetter" id ="G"></div>
+        <div class="droppable blank" id ="H"></div>
+        <div class="droppable doubleLetter" id ="I"></div>
+        <div class="droppable blank" id ="J"></div>
+        <div class="droppable blank" id="K"></div>
+        <div class="droppable blank" id ="L"></div>
+        <div class="droppable doubleWord" id ="M"></div>
+        <div class="droppable blank" id ="N"></div>
+        <div class="droppable blank" id ="O"></div>
       </div>
-    <div>
-      <button id="btnReset">Reset</button>
+    <div id="buttons" class="row justify-content-center">
+      <button class="col-sm-3 justify-content-center" id="btnReset">Reset</button>
+      <button class="col-sm-3 justify-content-center" id="btnSubmit">Submit Word</button>
+      <button class="col-sm-3" id="btnSOver">Start Over</button>
     </div>
-      <div id="tileboard">
-        <div id="draggable" class="ui-widget-content">
-          <img class="tile" src="graphics_data/Scrabble_Tiles/Scrabble_Tile_A.jpg" width="60" height="65"  />
-          <img class="tile" src="graphics_data/Scrabble_Tiles/Scrabble_Tile_B.jpg" width="60" height="65"  />
+    <div class="dialog" id="myform">
+      <form>
+        <label id="valueFromMyButton">
+        </label>
+        <input type="text" id="name">
+        <div align="center">
+          <input type="button" value="Ok" id="btnOK">
+        </div>
+    </form>
+    </div>
+      <div id="tileboard" class="row justify-content-center">
+        <div id="draggable" class="justify-content-center">
         </div>
       </div>
       
