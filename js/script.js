@@ -1,4 +1,10 @@
 /*
+File: script.js
+functions using jQuery to drive the game of scrabble via Drag N Drop
+Michael Batbouta, UMass Lowell Computer Science, Michael_batbouta@student.uml.edu
+Copyright (c) 2021 by Wenjin. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by Michael Batbouta on august 15, 2021 at 10:00pm
 resources used:
 used for drag and drop options: https://jqueryui.com/droppable/#visual-feedback
 multple dragg https://stackoverflow.com/questions/50604904/drag-image-on-multiple-droppable-div-with-same-class
@@ -26,25 +32,25 @@ $( function() {
   var upperLimit = 0;
 
   //get JSON and start the game
-  $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
+$.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
   .done(function(response) {
     tileJSON = response.pieces;
     startgame();
   });
 
-    function startgame(){
-      fillTilePool();
-      loadTiles();
-    }
+  function startgame(){
+    fillTilePool();
+    loadTiles();
+  }
 
-    function fillTilePool(){
-      for(i = 0; i < 27; i++){
-        var currentTile = tileJSON[i];
-        for(k = 0; k < currentTile.amount; k++){
-          tilePool.push(currentTile);
-        }
+  function fillTilePool(){
+    for(i = 0; i < 27; i++){
+      var currentTile = tileJSON[i];
+      for(k = 0; k < currentTile.amount; k++){
+        tilePool.push(currentTile);
       }
     }
+  }
 
   function reverToRack(event, ui){
     $(this).data("ui-draggable").originalPosition = {
@@ -54,7 +60,7 @@ $( function() {
     return !event;
   }
     
-   function loadTiles(){    
+  function loadTiles(){    
     var myTableDiv = document.getElementById("draggable");
      for(var x = currentLengthRack; x < 7; x++){
       var nextLetter = getRandomInt(tilePool.length);
@@ -163,7 +169,6 @@ function updateRack(rackID){
   const index = rack.indexOf(rackID);
   rack.splice(index, 1);
   currentLengthBoard++;
-
 }
 
 function calcScore(value, boardval){
@@ -187,6 +192,7 @@ function calcScore(value, boardval){
 $("#btnReset").click(function() {
   
 });
+
 $("#btnSubmit").click(function() {
   var removeValuesBoard = 0;
   while(removeValuesBoard < currentLengthBoard){
@@ -265,7 +271,7 @@ $(".ui-widget-content").data("left", 0).data("top", 0);
 //************** END OF JQUERY  **************************/
 
 // obtained from: https://stackoverflow.com/questions/3387427/remove-element-by-id
-  Element.prototype.remove = function() {
+Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 }
 NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
