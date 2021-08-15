@@ -30,6 +30,7 @@ $( function() {
   var tileCount = 0;
   var lowerLimit = 0;
   var upperLimit = 0;
+  var isDoubled = 0;
 
   //get JSON and start the game
 $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
