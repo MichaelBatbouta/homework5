@@ -44,16 +44,14 @@ $( function() {
           tilePool.push(currentTile);
         }
       }
-        //var rTile = document.getElementById("remaining_tile");
-        //rTile.append(tilePool.length)
-      }
+    }
 
   function reverToRack(event, ui){
     $(this).data("ui-draggable").originalPosition = {
-          top : 0,
-          left : 0
-      };
-      return !event;
+        top : 0,
+        left : 0
+    };
+    return !event;
   }
     
    function loadTiles(){    
@@ -82,15 +80,10 @@ $( function() {
                 ui.draggable.animate(ui.draggable.data().origPosition= { top : 0, left : 0 },"slow"); //set the dragged tile to always revert
               }
             });
-
     } 
-
-
     $('#remaining_tile div').html(function(){
       return('<div>'+tilePool.length+ '</div>');
     });
-
-    
   }
 
 

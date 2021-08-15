@@ -1,3 +1,11 @@
+/*
+File: style.css
+GUI Assignment: Styling for scrabble
+Michael Batbouta, UMass Lowell Computer Science, michael_batbouta@student.uml.edu
+Copyright (c) 2021 by Wenjin. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+updated by Michael Batbouta on august 15, 2021 at 10:00 pm
+*/
 #game{
     margin: 0px 200px 0px 200px;
     min-width: 1300px;
