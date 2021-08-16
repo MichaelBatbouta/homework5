@@ -53,6 +53,7 @@ $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
     }
   }
 
+  //found - https://stackoverflow.com/questions/45122467/jquery-ui-draggable-and-droppable-return-to-original-position-only
   function reverToRack(event, ui){
     $(this).data("ui-draggable").originalPosition = {
         top : 0,
@@ -61,7 +62,8 @@ $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
     return !event;
   }
     
-  function loadTiles(){    
+  function loadTiles(){ 
+    isDouble = 0;   
     var myTableDiv = document.getElementById("draggable");
      for(var x = currentLengthRack; x < 7; x++){
       var nextLetter = getRandomInt(tilePool.length);
@@ -174,13 +176,28 @@ function updateRack(rackID){
 
 function calcScore(value, boardval){
   if(boardval == 'G' || boardval == 'I'){
-    score = score + Number.parseInt(value) * 2;  //double Letter
+    if(isDoubled == 1){
+      score = score + Number.parseInt(value) * 2 * 2;
+    }else{
+      score = score + Number.parseInt(value) * 2;  //double Letter
+    }
+
   }
   else if(boardval =='C' || boardval == 'M'){
-    score = score * 2 + Number.parseInt(value) * 2; 
+    if(isDoubled == 1){
+
+    }else{
+      isDoubled = 1;
+      score = score * 2 + Number.parseInt(value) * 2; 
+    }
   }
   else{
-    score = score + Number.parseInt(value);
+    if(isDoubled == 1){
+      score = score + Number.parseInt(value) * 2;
+    }else{
+      score = score + Number.parseInt(value);
+    }
+
   }
   $('#score div').html(function(){
     return('<div>'+score+ '</div>');
@@ -287,5 +304,3 @@ NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
-
