@@ -65,33 +65,36 @@ $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json", function(dat
   //main function used to load and refresh tiles to always have 7 this function updates the remaining tiles and makes the objects draggable 
   //alot of the above resources were used to make this function
   function loadTiles(){ 
-    isDouble = 0;   
-    var myTableDiv = document.getElementById("draggable");
-     for(var x = currentLengthRack; x < 7; x++){
-      var nextLetter = getRandomInt(tilePool.length);
-      $( '<img id="tile'+tileCount+'" value="'+ tilePool[nextLetter].value+'" letter="'+tilePool[nextLetter].letter+'" class="tile draggable ui-widget-content" src="graphics_data/Scrabble_Tiles/Scrabble_Tile_'+tilePool[nextLetter].letter +'.jpg" width="60" height="65"/>').appendTo( myTableDiv );
-      rack[currentLengthRack] = "tile"+ tileCount;
-      currentLengthRack++;
-      tilePool.splice(nextLetter, 1);
-      tileCount++;
-      $( "#draggable img" ).draggable({
-        revert :  reverToRack,  
-            refreshPositions: true,
-            snapTolerance: "3",
-            stop: function(){
-                   $(this).draggable('option','revert', reverToRack);
-                  }
-        }).droppable({  //prevent user from placing letter tiles on top of eachother, learned about this from: https://stackoverflow.com/questions/6071409/draggable-revert-if-outside-this-div-and-inside-of-other-draggables-using-both
-          greedy: true,
-          tolerance: 'pointer',
-          drop: function(event,ui){
-                ui.draggable.animate(ui.draggable.data().origPosition= { top : 0, left : 0 },"slow"); //set the dragged tile to always revert
-              }
-            });
-    } 
-    $('#remaining_tile div').html(function(){
-      return('<div>'+tilePool.length+ '</div>');
-    });
+    if(tilePool.length > 7)
+    {
+      isDouble = 0;   
+      var myTableDiv = document.getElementById("draggable");
+       for(var x = currentLengthRack; x < 7; x++){
+        var nextLetter = getRandomInt(tilePool.length);
+        $( '<img id="tile'+tileCount+'" value="'+ tilePool[nextLetter].value+'" letter="'+tilePool[nextLetter].letter+'" class="tile draggable ui-widget-content" src="graphics_data/Scrabble_Tiles/Scrabble_Tile_'+tilePool[nextLetter].letter +'.jpg" width="60" height="65"/>').appendTo( myTableDiv );
+        rack[currentLengthRack] = "tile"+ tileCount;
+        currentLengthRack++;
+        tilePool.splice(nextLetter, 1);
+        tileCount++;
+        $( "#draggable img" ).draggable({
+          revert :  reverToRack,  
+              refreshPositions: true,
+              snapTolerance: "3",
+              stop: function(){
+                     $(this).draggable('option','revert', reverToRack);
+                    }
+          }).droppable({  //prevent user from placing letter tiles on top of eachother, learned about this from: https://stackoverflow.com/questions/6071409/draggable-revert-if-outside-this-div-and-inside-of-other-draggables-using-both
+            greedy: true,
+            tolerance: 'pointer',
+            drop: function(event,ui){
+                  ui.draggable.animate(ui.draggable.data().origPosition= { top : 0, left : 0 },"slow"); //set the dragged tile to always revert
+                }
+              });
+      } 
+      $('#remaining_tile div').html(function(){
+        return('<div>'+tilePool.length+ '</div>');
+      });
+    }
   }
 
 

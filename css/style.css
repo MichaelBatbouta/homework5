@@ -43,15 +43,12 @@ h1{
   margin-bottom:-20px;
  }
 
- /* change below!!!*/
- /*Style and center the score board and everything in it*/
 #score_div{
     display: flex;
     justify-content: center;
     color: black;
   }
   
-  /*center score board content*/
   #current_word, #score, #remaining_tile, #High_score{
     justify-content: center;
     text-align: center;
@@ -59,6 +56,10 @@ h1{
   #targetboard{
     text-align: center;
   }
+  #about{
+    text-align: center;
+  }
+  /* board styling*/
   .doubleWord{
     display: inline-block;
     background: url("../graphics_data/Scrabble_Board_P/double_Word.png");
@@ -86,7 +87,5 @@ h1{
     background-size: 100% 100%;
     margin:0px -1px 0px -5px;
  }
- #about{
-   text-align: center;
- }
+
 
