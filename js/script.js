@@ -33,9 +33,9 @@ $( function() {
   var isDoubled = 0;
 
   //get JSON and start the game
-$.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
-  .done(function(response) {
-    tileJSON = response.pieces;
+  //https://api.jquery.com/jquery.get/
+$.get("https://michaelbatbouta.github.io/homework5/js/pieces.json", function(data){
+    tileJSON = data.pieces;
     startgame();
   });
 
@@ -61,7 +61,9 @@ $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
     };
     return !event;
   }
-    
+  
+  //main function used to load and refresh tiles to always have 7 this function updates the remaining tiles and makes the objects draggable 
+  //alot of the above resources were used to make this function
   function loadTiles(){ 
     isDouble = 0;   
     var myTableDiv = document.getElementById("draggable");
@@ -74,11 +76,8 @@ $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
       tileCount++;
       $( "#draggable img" ).draggable({
         revert :  reverToRack,  
-            snap: ".ui-droppable",
             refreshPositions: true,
             snapTolerance: "3",
-            snapMode: "both",
-            stack: ".ui-draggable",
             stop: function(){
                    $(this).draggable('option','revert', reverToRack);
                   }
@@ -98,6 +97,7 @@ $.get("https://michaelbatbouta.github.io/homework5/js/pieces.json")
 
 //droppable function
 //used to limit to only dropping in the tile ahead and behind to make a word!
+//
 $( ".droppable" ).droppable({
   activeClass: "active",
   hoverClass:  "hover",
@@ -160,9 +160,7 @@ $( ".droppable" ).droppable({
     }
     else{
       ui.draggable.animate(ui.draggable.data().origPosition= { top : 0, left : 0 },"slow");
-
     }
-
   }
 });
 
@@ -175,29 +173,23 @@ function updateRack(rackID){
 }
 
 function calcScore(value, boardval){
-  if(boardval == 'G' || boardval == 'I'){
+  if(boardval == 'G' || boardval == 'I'){//double Letter
     if(isDoubled == 1){
       score = score + Number.parseInt(value) * 2 * 2;
     }else{
-      score = score + Number.parseInt(value) * 2;  //double Letter
+      score = score + Number.parseInt(value) * 2;  
     }
-
   }
-  else if(boardval =='C' || boardval == 'M'){
-    if(isDoubled == 1){
-
-    }else{
-      isDoubled = 1;
-      score = score * 2 + Number.parseInt(value) * 2; 
-    }
+  else if(boardval =='C' || boardval == 'M'){//double word
+    isDoubled = 1;
+    score = score * 2 + Number.parseInt(value) * 2; 
   }
   else{
-    if(isDoubled == 1){
+    if(isDoubled == 1){                       // normal tile
       score = score + Number.parseInt(value) * 2;
     }else{
       score = score + Number.parseInt(value);
     }
-
   }
   $('#score div').html(function(){
     return('<div>'+score+ '</div>');
@@ -206,10 +198,6 @@ function calcScore(value, boardval){
 
 
 //***********Button Section************
-
-$("#btnReset").click(function() {
-  
-});
 
 $("#btnSubmit").click(function() {
   var removeValuesBoard = 0;
@@ -238,7 +226,6 @@ $("#btnSubmit").click(function() {
 
 //whipe out everything and start fresh
 $("#btnSOver").click(function() {
-  //document.getElementById("tile1").remove();
   var removeValuesRack = 0;
   var removeValuesBoard = 0;
   while(removeValuesRack < currentLengthRack){
@@ -249,6 +236,7 @@ $("#btnSOver").click(function() {
     document.getElementById(board[removeValuesBoard]).remove();
     removeValuesBoard++;
   }
+  isDoubled = 0;
   word = "";
   score = 0;
   tScore = 0;
@@ -271,18 +259,7 @@ $("#btnSOver").click(function() {
   startgame();
  
 });
-// obtained from: https://stackoverflow.com/questions/10014196/jquery-draggable-revert-on-button-click
-$("#btnReset").click(function() {
-  score = 0;
-  $('#score div').html(function(){
-    return('<div>'+score+ '</div>');
-  });
-  $("#tile2, #tile4").animate({
-      "left": $("#tile2").data("left"),
-      "top": $("#tile2").data("top")
-  });
-});
-$(".ui-widget-content").data("left", 0).data("top", 0);
+
 
 });
 

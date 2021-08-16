@@ -16,7 +16,6 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_droppable.htm
     <title>title</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="js/script.js"></script>
@@ -49,17 +48,19 @@ https://www.tutorialspoint.com/jqueryui/jqueryui_droppable.htm
         <div class="droppable blank" id ="O"></div>
       </div>
     <div id="buttons" class="row justify-content-center">
-      <button class="col-sm-3 justify-content-center" id="btnReset">Reset</button>
-      <button class="col-sm-3 justify-content-center" id="btnSubmit">Submit Word</button>
-      <button class="col-sm-3" id="btnSOver">Start Over</button>
+      <button class="col-sm-4" id="btnSubmit">Submit Word</button>
+      <button class="col-sm-4" id="btnSOver">Start Over</button>
     </div>
       <div id="tileboard" class="row justify-content-center">
         <div id="draggable" class="justify-content-center">
         </div>
       </div>
-      
-    </div>
 
-    <!-- page content -->
+      <div id="about">
+        <h2> About The Game</h2>
+        <p>This is a simple scrabble game that you can drag and drop pieces.<br>Rules:<br>Onces a letter is placed you must place pieces next to it!<br>
+        Onces a letter is places it can not be picked up and you MUST hit start over if you cant make a word!<br>The page is not resizable! sorry!</p>
+      </div>     
+    </div>
   </body>
 </html>
